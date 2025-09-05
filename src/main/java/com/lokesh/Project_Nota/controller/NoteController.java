@@ -6,8 +6,8 @@ import com.lokesh.Project_Nota.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.jwt.Jwt;
+//import org.springframework.security.core.annotation.AuthenticationPrincipal;
+//import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,9 +46,9 @@ public class NoteController {
         return ResponseEntity.ok(noteService.deleteNote(id));
     }
 
-    @PostMapping("/share/{id}")
-    public ResponseEntity<Map<String,String>> toggleShare(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
-        return ResponseEntity.ok(noteService.toggleShare(id, jwt));
-    }
+//    @PostMapping("/share/{id}")
+//    public ResponseEntity<Map<String,String>> toggleShare(@PathVariable Long id, @AuthenticationPrincipal Jwt jwt) {
+//        return ResponseEntity.ok(noteService.toggleShare(id, jwt));
+//    }
 
 }

@@ -4,7 +4,7 @@ import com.lokesh.Project_Nota.NoteDTO;
 import com.lokesh.Project_Nota.model.Note;
 import com.lokesh.Project_Nota.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.oauth2.jwt.Jwt;
+//import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -54,35 +54,35 @@ public class NoteService {
                 .orElseThrow(() -> new RuntimeException("Note not found or not shared with shareableId: " + shareableId));
     }
 
-    public Map<String,String> toggleShare(Long id, Jwt jwt) {
-        String userId = jwt.getSubject();
-        Note existingNote = noteRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Note not found with id: " + id));
-
-        if(!existingNote.getUserId().equals(userId)) {
-            throw new RuntimeException("You are not authorized to share this note");
-        }
-
-        existingNote.setShared(!existingNote.isShared());
-
-        if(existingNote.isShared() && existingNote.getShareableId() == null) {
-            existingNote.setShareableId(UUID.randomUUID());
-        } else if (!existingNote.isShared()) {
-            existingNote.setShareableId(null);
-        }
-
-        noteRepository.save(existingNote);
-
-        Map<String,String> response = new HashMap<>();
-
-        if(existingNote.isShared()) {
-            response.put("message", "Note is now shared");
-            response.put("shareableLink", "http://localhost:8080/api/public/notes/" + existingNote.getShareableId());
-        } else {
-            response.put("message", "Note is no longer shared");
-            response.put("shareableLink", null);
-        }
-
-        return response;
-    }
+//    public Map<String,String> toggleShare(Long id, Jwt jwt) {
+//        String userId = jwt.getSubject();
+//        Note existingNote = noteRepository.findById(id)
+//                .orElseThrow(() -> new RuntimeException("Note not found with id: " + id));
+//
+//        if(!existingNote.getUserId().equals(userId)) {
+//            throw new RuntimeException("You are not authorized to share this note");
+//        }
+//
+//        existingNote.setShared(!existingNote.isShared());
+//
+//        if(existingNote.isShared() && existingNote.getShareableId() == null) {
+//            existingNote.setShareableId(UUID.randomUUID());
+//        } else if (!existingNote.isShared()) {
+//            existingNote.setShareableId(null);
+//        }
+//
+//        noteRepository.save(existingNote);
+//
+//        Map<String,String> response = new HashMap<>();
+//
+//        if(existingNote.isShared()) {
+//            response.put("message", "Note is now shared");
+//            response.put("shareableLink", "http://localhost:8080/api/public/notes/" + existingNote.getShareableId());
+//        } else {
+//            response.put("message", "Note is no longer shared");
+//            response.put("shareableLink", null);
+//        }
+//
+//        return response;
+//    }
 }
