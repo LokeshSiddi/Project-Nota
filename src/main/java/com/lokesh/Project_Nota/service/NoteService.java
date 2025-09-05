@@ -1,9 +1,9 @@
 package com.lokesh.Project_Nota.service;
 
+import com.lokesh.Project_Nota.NoteDTO;
 import com.lokesh.Project_Nota.model.Note;
 import com.lokesh.Project_Nota.repository.NoteRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class NoteService {
         return noteRepository.findAll();
     }
 
-    public Note createNote(Note note) {
+    public Note createNote(NoteDTO note) {
         Note newNote = new Note();
         newNote.setTitle(note.getTitle());
         newNote.setContent(note.getContent());
@@ -33,7 +33,7 @@ public class NoteService {
         return noteRepository.findById(id).get();
     }
 
-    public Note updateNote(Long id, Note note) {
+    public Note updateNote(Long id, NoteDTO note) {
         Note existingNote = noteRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Note not found with id: " + id));
         existingNote.setTitle(note.getTitle());

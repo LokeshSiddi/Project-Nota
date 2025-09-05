@@ -1,5 +1,6 @@
 package com.lokesh.Project_Nota.controller;
 
+import com.lokesh.Project_Nota.NoteDTO;
 import com.lokesh.Project_Nota.model.Note;
 import com.lokesh.Project_Nota.service.NoteService;
 import lombok.RequiredArgsConstructor;
@@ -31,12 +32,12 @@ public class NoteController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Note> createNote(@RequestBody Note note) {
+    public ResponseEntity<Note> createNote(@RequestBody NoteDTO note) {
         return ResponseEntity.ok(noteService.createNote(note));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody Note note) {
+    public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody NoteDTO note) {
         return ResponseEntity.ok(noteService.updateNote(id, note));
     }
 
