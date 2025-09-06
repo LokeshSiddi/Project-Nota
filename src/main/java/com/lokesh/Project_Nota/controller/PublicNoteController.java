@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+//@CrossOrigin(origins = "https://your-notes-frontend.vercel.app")
+//@CrossOrigin(origins = "${app.cors.allowed-origins}")
 @RestController
 @RequestMapping("/api/public/notes")
 @CrossOrigin(origins = "*") // Allow requests from any origin
