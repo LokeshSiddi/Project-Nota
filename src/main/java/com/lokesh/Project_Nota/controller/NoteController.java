@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 //@CrossOrigin(origins = "https://your-notes-frontend.vercel.app")
-//@CrossOrigin(origins = "${app.cors.allowed-origins}")
+@CrossOrigin(origins = "${app.cors.allowed-origins}")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/notes")
